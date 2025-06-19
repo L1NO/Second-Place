@@ -7,23 +7,6 @@
   --btn-bg-color: #2196f3;
   --cta-hover-color: #167bce;
   --btn-bg-light: #eeeeee;
-
-  /* Dark Theme */
-  --dark-primary-bg-color: #222222;
-  --dark-primary-text-color: #ffffff;
-  --dark-secondary-color: #828282;
-  --dark-btn-bg-color: #1e88e5;
-  --dark-cta-hover-color: #0d5e8c;
-  --dark-btn-bg-light: #eeeeee;
-}
-
-.dark-theme {
-  --primary-bg-color: var(--dark-primary-bg-color);
-  --primary-text-color: var(--dark-primary-text-color);
-  --secondary-color: var(--dark-secondary-color);
-  --btn-bg-color: var(--dark-btn-bg-color);
-  --cta-hover-color: var(--dark-cta-hover-color);
-  --btn-bg-light: var(--dark-btn-bg-light);
 }
 
 body {
@@ -80,7 +63,7 @@ footer,
 
 article,
 .hero,
-.logo-container,
+logo-container,
 .portfolio,
 .skills {
   gap: 1rem;
@@ -152,6 +135,9 @@ footer,
   margin: auto;
   margin-top: 1.4rem;
   max-width: 20rem;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .experience b {
@@ -313,37 +299,63 @@ footer {
   font-weight: 600;
 }
 
-/* .skills-group {
+.h2-group {
   display: flex;
+  gap: 3rem; /* 增加間距讓兩個 h2 分開一點 */
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 0.5rem; /* 與介紹區塊間距 */
+}
+
+.h2-group h2 {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.h2-group h2 b {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  letter-spacing: 1px;
+}
+
+.introduction {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  font-family: var(--primary-font, "Arial, sans-serif");
+  color: #000;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Mobile styles - both groups stack vertically */
+.skills-group {
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
   justify-content: center;
-}*/
+  align-items: center;
+}
 
 .portfolio-group {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 2rem;
   justify-content: center;
+  align-items: center;
 }
 
 .project-wrapper {
-  flex: 0 1 calc(50% - 2rem); /* Two per row, minus gap */
-  box-sizing: border-box;
   display: flex;
   justify-content: center;
 }
 
-/* @media (max-width: 700px) {
-  .portfolio-group {
-    flex-direction: column;
-    align-items: center;
-  }
-  .project-wrapper {
-    width: 100%;
-    max-width: 20rem;
-  }
-} */
-
+/* Desktop styles - both groups display side by side */
 @media screen and (min-width: 900px) {
   .skills,
   .portfolio {
@@ -355,16 +367,32 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
   }
-  .skills-group,
-  .portfolio-group {
+  
+  .skills-group {
     display: flex;
     flex-direction: row;
     gap: 2rem;
     justify-content: center;
     width: 100%;
   }
+  
+  .portfolio-group {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
   .wrapper {
     width: calc(48%);
     flex: none;
+  }
+  
+  .project-wrapper {
+    flex: 0 1 calc(50% - 1rem);
+    box-sizing: border-box;
+    max-width: calc(50% - 1rem);
   }
 }
